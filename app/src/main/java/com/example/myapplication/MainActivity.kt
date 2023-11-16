@@ -10,10 +10,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
     private val API_KEY = "af8b16741ab74e53544c95208262593b"  // OpenWeatherMap에서 발급받은 API 키를 입력하세요
-    private val BASE_URL = "https://api.openweathermap.org/"
+    private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
     private lateinit var cityNameTextView: TextView
     private lateinit var temperatureTextView: TextView
     private lateinit var descriptionTextView: TextView
@@ -42,14 +43,14 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val weatherData = response.body()
                     Log.d("weather", "Success: $weatherData")
-                    val temperature = weatherData?.main?.temp
+                    val temperatureKelvin = weatherData?.main?.temp
+                    val temperatureCelsius = temperatureKelvin?.minus(273.15)?.roundToInt()
                     val description = weatherData?.weather?.get(0)?.description
                     val cityName = weatherData?.name
-
                     runOnUiThread {
-                        cityNameTextView.text = weatherData?.name
-                        temperatureTextView.text = "$temperature°C"
-                        descriptionTextView.text = description
+                        cityNameTextView.text = "도시 이름 : $cityName "
+                        temperatureTextView.text = "현재 기온 : $temperatureCelsius°C"
+                        descriptionTextView.text = "현재 날씨 : $description"
                     }
                 } else {
                     Log.e("weather", "Error: ${response.code()} - ${response.message()}")
