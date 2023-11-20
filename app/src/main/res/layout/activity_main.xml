@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/weatherIconView"
+        android:layout_width="match_parent"
+        android:layout_height="265dp" />
+
     <TextView
         android:id="@+id/cityNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City Name"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"/>
 
@@ -20,14 +26,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Temperature"
-        android:textSize="18sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"/>
-
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:textStyle="bold"
+        android:text="description"
+        android:textSize="25sp"
+        android:layout_marginTop="8dp"/>
+    <!--<TextView
+        android:id="@+id/cloudinessView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" cloudiness"
         android:textSize="18sp"
         android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/humidityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="humidity"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/windSpeedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="windSpeed"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>-->
 </LinearLayout>
